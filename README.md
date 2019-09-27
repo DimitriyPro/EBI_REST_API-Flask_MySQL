@@ -1,13 +1,11 @@
 REST-like web service that provides a single endpoint `gene_suggest`.
 
 The endpoint accepts the following arguments:
-* table - name of the table for search
 * query - the partial query typed by the user, e.g. `brc` (as in the example above)
 * species - the name of the target species, e.g. `homo_sapiens`
 * limit - the maximum number of suggestions to return, e.g. `10`
 
 If there is no any arguments enpoint use this default arguments:
-* table=gene_autocomplete
 * species=homo_sapiens
 * label=BRC%
 * limit=2
@@ -35,13 +33,13 @@ Examples:
 
 {a}: http://127.0.0.1:5000/gene_suggest - default search
 
-{b}: http://127.0.0.1:5000/gene_suggest?table=gene_autocomplete&species=homo_sapiens&label=BRC%%&limit=2 - default parametrs
+{b}: http://127.0.0.1:5000/gene_suggest?species=homo_sapiens&label=BRC%%&limit=2 - default parametrs
 
-{c}: http://127.0.0.1:5000/gene_suggest?table=gene_autocomplete&species=homo_sapiens&label=BRCA1&limit=2
+{c}: http://127.0.0.1:5000/gene_suggest?species=homo_sapiens&label=BRCA1&limit=2
 
-{d}: http://127.0.0.1:5000/gene_suggest?table=gene_autocomplete&species=homo_sapiens&label=BRCC3P1&limit=2
+{d}: http://127.0.0.1:5000/gene_suggest?species=homo_sapiens&label=BRCC3P1&limit=2
 
-Note: You should use %% instead % for correct processing SQL-query. You IP may be 0.0.0.0 instead of 127.0.0.1 it depends on your OS.
+Note: You can use regular expression in label but you should use %% instead % for correct processing SQL-query. Please check, you IP may be 0.0.0.0 instead of 127.0.0.1 it depends on your OS.
 
 Output: json-file with gene data
 
