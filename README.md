@@ -1,6 +1,6 @@
 REST-like web service that provides a single endpoint `gene_suggest`.
 
-The endpoint accepts the following arguments
+The endpoint accepts the following arguments:
 * table - name of the table for search
 * query - the partial query typed by the user, e.g. `brc` (as in the example above)
 * species - the name of the target species, e.g. `homo_sapiens`
@@ -32,22 +32,25 @@ The endpoint needs for correct work following pakages:
 Please use this or next version of packages. It also provides venv package for fast run.
 
 Examples:
-a: http://127.0.0.1:5000/gene_suggest - default search
 
-b: http://127.0.0.1:5000/gene_suggest?table=gene_autocomplete&species=homo_sapiens&label=BRC%%&limit=2 - default parametrs
+{a}: http://127.0.0.1:5000/gene_suggest - default search
 
-c: http://127.0.0.1:5000/gene_suggest?table=gene_autocomplete&species=homo_sapiens&label=BRCA1&limit=2
+{b}: http://127.0.0.1:5000/gene_suggest?table=gene_autocomplete&species=homo_sapiens&label=BRC%%&limit=2 - default parametrs
 
-d: http://127.0.0.1:5000/gene_suggest?table=gene_autocomplete&species=homo_sapiens&label=BRCC3P1&limit=2
+{c}: http://127.0.0.1:5000/gene_suggest?table=gene_autocomplete&species=homo_sapiens&label=BRCA1&limit=2
+
+{d}: http://127.0.0.1:5000/gene_suggest?table=gene_autocomplete&species=homo_sapiens&label=BRCC3P1&limit=2
+
 Note: You should use %% instead % for correct processing SQL-query. You IP may be 0.0.0.0 instead of 127.0.0.1 it depends on your OS.
 
 Output: json-file with gene data
 
 Output for examples:
-a: {"search": [{"species": "homo_sapiens", "stable_id": "ENSG00000012048", "display_label": "BRCA1", "location": "17:43044295-43170245", "db": "core"}, {"species": "homo_sapiens", "stable_id": "ENSG00000139618", "display_label": "BRCA2", "location": "13:32315474-32400266", "db": "core"}]}
 
-b: {"search": [{"species": "homo_sapiens", "stable_id": "ENSG00000012048", "display_label": "BRCA1", "location": "17:43044295-43170245", "db": "core"}, {"species": "homo_sapiens", "stable_id": "ENSG00000139618", "display_label": "BRCA2", "location": "13:32315474-32400266", "db": "core"}]}
+{a}: {"search": [{"species": "homo_sapiens", "stable_id": "ENSG00000012048", "display_label": "BRCA1", "location": "17:43044295-43170245", "db": "core"}, {"species": "homo_sapiens", "stable_id": "ENSG00000139618", "display_label": "BRCA2", "location": "13:32315474-32400266", "db": "core"}]}
 
-c: {"search": [{"species": "homo_sapiens", "stable_id": "ENSG00000012048", "display_label": "BRCA1", "location": "17:43044295-43170245", "db": "core"}]}
+{b}: {"search": [{"species": "homo_sapiens", "stable_id": "ENSG00000012048", "display_label": "BRCA1", "location": "17:43044295-43170245", "db": "core"}, {"species": "homo_sapiens", "stable_id": "ENSG00000139618", "display_label": "BRCA2", "location": "13:32315474-32400266", "db": "core"}]}
 
-d: {"search": [{"species": "homo_sapiens", "stable_id": "ENSG00000251667", "display_label": "BRCC3P1", "location": "5:176308063-176309013", "db": "core"}]}
+{c}: {"search": [{"species": "homo_sapiens", "stable_id": "ENSG00000012048", "display_label": "BRCA1", "location": "17:43044295-43170245", "db": "core"}]}
+
+{d}: {"search": [{"species": "homo_sapiens", "stable_id": "ENSG00000251667", "display_label": "BRCC3P1", "location": "5:176308063-176309013", "db": "core"}]}
