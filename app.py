@@ -12,12 +12,11 @@ api = Api(app)
 class GeneSuggest(Resource):
     def get(self):
         conn = db_connect.connect()  # connect to database
-        table = request.args.get('table', default='gene_autocomplete', type=str)
         species = request.args.get('species', default='homo_sapiens', type=str)
         label = request.args.get('label', default='BRC%%', type=str)
         limit = request.args.get('limit', default='2', type=str)
-        query = "SELECT * from {table} WHERE species = '{species}' and display_label LIKE '{label}' LIMIT {limit}".format(
-            table=table, species=species, label=label, limit=limit)
+        query = "SELECT * from gene_autocomplete WHERE species = '{species}' and display_label LIKE '{label}' LIMIT {limit}".format(
+            species=species, label=label, limit=limit)
         result = conn.execute(query)  # This line performs query and returns json result
         return {'search': [dict(zip(tuple(result.keys()), i)) for i in result.cursor]}  # Fetches column
 
